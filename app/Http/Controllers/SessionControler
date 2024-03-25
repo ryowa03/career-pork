@@ -1,5 +1,0 @@
-use Illuminate\Support\Facades\Session;
-
-// セッションをクリアして再生成する
-Session::flush();
-Session::regenerate();

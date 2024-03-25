@@ -6,6 +6,9 @@ use Closure;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Support\Facades\Session;
 
+Session::flush();
+Session::regenerate();
+
 class RefreshSessionIfExpired extends StartSession
 {
     public function handle($request, Closure $next)
