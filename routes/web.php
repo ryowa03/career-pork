@@ -42,6 +42,8 @@ Route::patch('post/{post}', [PostController::class, 'update'])
 Route::delete('post/{post}', [PostController::class, 'destroy'])
 ->name('post.destroy');
 
+
+
 Route::get('/admin/login', function () {
     return view('admin.auth.adminLogin'); // プラウザで/admin/loginに行くと、adminloginblade.phpが表示
 });
@@ -73,8 +75,8 @@ Route::get('/test', [TestController::class, 'test'])
 */
 
 
-Route::get('post/create',[PostController::class,'create'])
-->middleware(['auth','admin']);
+Route::get('post/create',[PostController::class,'create']);
+// ->middleware(['auth','admin']);
 //上記ミドルウェアが機能しているみたい。ユーザーログイン状態でpost/createいこうとすると、ダッシュボードに遷移する。
 //post.create行きたかったから、コメントアウトした。
 
