@@ -43,11 +43,13 @@
                 </a>
             @endif
 
-            <x-primary-button class="ms-3">
+          <a href="https://rapicro.com/laravel-env-php-artisan-configcache/" class="ms-3">
+               <x-primary-button>ボタン</x-primary-button>
+          </a>
 
-            あああ
+            <!-- <x-primary-button class="ms-3">
                 {{ __('Log in') }}
-            </x-primary-button>
+            </x-primary-button> -->
         </div>
     </form>
 </x-guest-layout>
