@@ -73,10 +73,8 @@ Route::get('/test', [TestController::class, 'test'])
 */
 
 
-
-
-Route::get('post/create',[PostController::class,'create']);
-// ->middleware(['auth','admin']);
+Route::get('post/create',[PostController::class,'create'])
+->middleware(['auth','admin']);
 //上記ミドルウェアが機能しているみたい。ユーザーログイン状態でpost/createいこうとすると、ダッシュボードに遷移する。
 //post.create行きたかったから、コメントアウトした。
 
