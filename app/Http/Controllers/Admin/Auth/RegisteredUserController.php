@@ -27,7 +27,7 @@ class RegisteredUserController extends Controller
 
     public function create(): View
 {
-    return view('admin.auth.register');
+    return view('auth.register');
 }
 
     /**
@@ -67,14 +67,6 @@ class RegisteredUserController extends Controller
         'email' => ['required', 'string', 'email', 'max:255', 'unique:App\Models\Admin'],
         'password' => ['required', 'confirmed', Rules\Password::defaults()],
     ]);
-
-
-
-    // $user = Admin::create([
-    //     'name' => $request->name,
-    //     'email' => $request->email,
-    //     'password' => Hash::make($request->password),
-    // ]);
 
 
     $user = Admin::create([
