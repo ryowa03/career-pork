@@ -44,6 +44,8 @@
             @endif
 
             <x-primary-button class="ms-3">
+
+            あああ
                 {{ __('Log in') }}
             </x-primary-button>
         </div>
