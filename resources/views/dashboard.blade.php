@@ -1,29 +1,19 @@
 <x-admin-layout>
-<!-- <x-app-layout> -->
+
     <x-slot name="header">
+
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('') }}
         </h2>
     </x-slot>
 
-    <!-- <div class="py-12" >
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900" >
-                  <x-primary-button href="{{ route('post.index') }}">
-                  ボタン
-                  </x-primary-button>
-                </div>
-            </div>
-        </div>
-    </div> -->
+<br><br>
 
+    <div style="text-align:center;">
+    <img src="{{ asset('img/top.png') }}" alt="" width="800" height="auto" style="margin: 0 auto;">
+</div>
 
-    <div style ="text-align:center;" >
-    <img src="../../career-pork/image/topimg.png" alt="画像の説明">
-    </div>
-
-
+<br>
 
     <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -38,5 +28,9 @@
 </div>
 
 
-<!-- </x-app-layout> -->
 </x-admin-layout>
+
+
+
+
+

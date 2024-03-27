@@ -11,15 +11,8 @@ use App\Models\Post;
 class PostController extends Controller
 {
    
-  public function index() {
-    $posts=Post::all();
-    //Post::allと書くことでPostモデルを介してpostsテーブルのデータをデータを取得’
-    //↑の処理でモデルからデータを取得し、2個下↓の処理でビューに表示する。それらをindexメソッドとして定義している
-    // $posts=Post::where('user_id',1)->whereDate('created_at','>=','2024-02-24')->get();
-    return view('post.index',compact('posts'));
-        }
+ 
 
-      
   public function create() {
           return view('post.create');
               }
@@ -75,47 +68,49 @@ return view('post.show',compact('post'));
   
   public function store(Request $request)
   {
-      // 新規postを作成
-      $post=new Post();
 
-      // バリデーションルール
-      $inputs=request()->validate([
-          'title'=>'required|max:255',
-          'body'=>'required|max:255',
-          'image'=>'image'
-      ]);
-
-      // 画像ファイルの保存場所指定
-      if(request('image')){
-          $filename=request()->file('image')->getClientOriginalName();
-          $inputs['image']=request('image')->storeAs('public/images', $filename);
-      }
-
-      // postを保存
-      $post->create($inputs);
-
-  // public function store(Request $request) {
-  //   $validated = $request->validate([
-  //       'title' => 'required|max:20',
-  //       'body' => 'required|max:400',
-  //       'image' => 'nullable|image|max:2048|mimes:jpeg,png,jpg,gif', // 必須ではなく、画像のバリデーションルールを変更
-  //   ]);
-
-  //   $validated['user_id'] = auth()->id();
-
-  //   // 画像のアップロード処理
-  //   if ($request->hasFile('image')) {
-  //       $imagePath = $request->file('image')->store('public'); // 'public'ディレクトリに画像を保存
-  //       $validated['image'] = $imagePath; // 画像の保存パスをデータベースに保存
-  //   }
+ // バリデーションルール
+ $inputs=request()->validate([
+  'title'=>'required|max:255',
+  'body'=>'required|max:255',
+]);
 
 
-  //      // データベースに保存
-  //      Post::create($validated);
+    $imagePath = $request->file('image')->store('images', 'public');
 
-       return back();
+      // 
+      $post = new Post(); //これで新しいpostsテーブルのレコード作っている
+      $post->title = $request->input('title');
+      $post->body = $request->input('body');
+      $post->body2 = $request->input('body2');
+      $post->image_path = $imagePath; // 画像の保存パスを保存します
+      $post->save();
+      
+      return back();
+    }
+
+    
+    public function index() {
+      $posts=Post::all();
+      //Post::allと書くことでPostモデルを介してpostsテーブルのデータをデータを取得’
+      //↑の処理でモデルからデータを取得し、2個下↓の処理でビューに表示する。それらをindexメソッドとして定義している
+      // $posts=Post::where('user_id',1)->whereDate('created_at','>=','2024-02-24')->get();
+      return view('post.index',compact('posts'));
+          }
+
+
    }
-  }
+
+      // // 画像ファイルの保存場所指定
+      // if(request('image')){
+      //     $filename=request()->file('image')->getClientOriginalName();
+      //     $inputs['image']=request('image')->storeAs('public/images', $filename);
+      // }
+
+      // // postを保存
+      // $post->create($inputs);
+
+   
 
 
 

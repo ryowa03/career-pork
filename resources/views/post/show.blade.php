@@ -11,9 +11,11 @@
                     {{ $post->title }}
                 </h1> 
 
+
                 <div>
     @if($post->image) <!-- $post->imageがnullでない場合に画像を表示 -->
-        <img src="{{ asset('storage/' . $post->image) }}" alt="Post Image">
+        <!-- <img src="{{ asset('storage/' . $post->image) }}" alt="Post Image"> -->
+        <img src="{{ asset($post->image_path) }}" alt="画像の説明">
     @else
         <!-- 画像が存在しない場合の代替テキストやデフォルトの画像を表示 -->
         <span>No image available</span>
