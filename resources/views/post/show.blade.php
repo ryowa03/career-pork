@@ -11,9 +11,12 @@
                     {{ $post->title }}
                 </h1> 
 
+                <!-- <div>
+    {{ $post->image_path }}
+</div> -->
 
                 <div>
-    @if($post->image) <!-- $post->imageがnullでない場合に画像を表示 -->
+    @if($post->image_path) <!-- $post->　データーベースからimage_pathを受け取る -->
         <!-- <img src="{{ asset('storage/' . $post->image) }}" alt="Post Image"> -->
         <img src="{{ asset($post->image_path) }}" alt="画像の説明">
     @else
@@ -22,20 +25,31 @@
     @endif
 </div>
 
-                <div class="text-right flex">
+
+
+<div class="text-right flex">
+                <a href="{{route('post.index')}}" class="flex-1">
+                <x-primary-button>
+                    話を聞きにいく
+                </x-primary-button>
+                </a>
+
+
+                <!-- <div class="text-right flex">
                 <a href="{{route('post.edit',$post)}}" class="flex-1">
                 <x-primary-button>
                     編集
                 </x-primary-button>
-                </a>
+                </a> -->
 
+<!-- 一時的に削除・編集　機能消す。
                 <form method="post" action="{{route('post.destroy', $post)}}" class="flex-2">
                     @csrf
                     @method('delete')
                         <x-primary-button class="bg-red-700 ml-2">
                             削除
                         </x-primary-button>
-                    </form>
+                    </form> -->
 
                 </div>
 
