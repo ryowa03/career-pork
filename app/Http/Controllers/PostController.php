@@ -76,13 +76,13 @@ return view('post.show',compact('post'));
 ]);
 
 
-    $imagePath = $request->file('image')->store('images', 'public');
+    $imagePath = $request->file('image')->store('images', 'public',);
 
       // 
       $post = new Post(); //これで新しいpostsテーブルのレコード作っている
       $post->title = $request->input('title');
       $post->body = $request->input('body');
-      $post->body2 = $request->input('body2');
+      $post->body2 = $request->input('body');
       $post->image_path = $imagePath; // 画像の保存パスを保存します
       $post->save();
       
