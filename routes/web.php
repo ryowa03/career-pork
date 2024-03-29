@@ -9,6 +9,8 @@ use App\Http\Controllers\PostController;
 
 use App\Http\Controllers\LoginController;
 
+use App\Http\Controllers\InforController;
+
 
 // use App\Http\Controllers\ProfileController as ProfileOfAdminController;
 
@@ -60,6 +62,7 @@ Route::post('/admin/login', [LoginController::class, 'adminLogin'])
 Route::get('post/show/{post}', [PostController::class, 'show'])
 ->name('post.show');
 
+
 Route::get('/test', [TestController::class, 'test'])
 ->name('test');
 
@@ -87,6 +90,9 @@ Route::post('post',[PostController::class,'store'])
 Route::get('post',[PostController::class,'index'])
 ->name('post.index'); 
 
+
+Route::get('infor',[InforController::class,'infor'])
+->name('infor'); 
 
 // Route::middleware(['auth','admin'])->group(function () {
 //     Route::get('post', [PostController::class, 'index']);

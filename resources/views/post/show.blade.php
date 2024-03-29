@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            個別表示
+         
     </h2>
     </x-slot>
     <div class="max-w-7xl mx-auto px-6">
@@ -17,8 +17,8 @@
 
                 <div>
     @if($post->image_path) <!-- $post->　データーベースからimage_pathを受け取る -->
-        <!-- <img src="{{ asset('storage/' . $post->image) }}" alt="Post Image"> -->
-        <img src="{{ asset($post->image_path) }}" alt="画像の説明">
+        <img src="{{ asset('storage/' . $post->image_path) }}" alt="Post Image" width='50%'>
+        <!-- <img src="{{ asset($post->image_path) }}" alt="画像の説明"> -->
     @else
         <!-- 画像が存在しない場合の代替テキストやデフォルトの画像を表示 -->
         <span>No image available</span>
@@ -28,9 +28,9 @@
 
 
 <div class="text-right flex">
-                <a href="{{route('post.index')}}" class="flex-1">
+                <a href="{{route('infor')}}" class="flex-1">
                 <x-primary-button>
-                    話を聞きにいく
+                    コンタクトをとる
                 </x-primary-button>
                 </a>
 
