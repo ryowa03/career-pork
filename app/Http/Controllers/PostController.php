@@ -82,7 +82,7 @@ return view('post.show',compact('post'));
       $post = new Post(); //これで新しいpostsテーブルのレコード作っている
       $post->title = $request->input('title');
       $post->body = $request->input('body');
-      $post->body2 = $request->input('body');
+      $post->body2 = $request->input('body2');
       $post->image_path = $imagePath; // 画像の保存パスを保存します
       $post->save();
       
@@ -111,10 +111,6 @@ return view('post.show',compact('post'));
       // $post->create($inputs);
 
    
-
-
-
-
 
 
 

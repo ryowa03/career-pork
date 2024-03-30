@@ -32,8 +32,8 @@
 
             <div class="w-full flex flex-col">
                 <label for="body2" class="font-semibold mt-4">point2</label>
-                <x-input-error :messages="$errors->get('body')" class="mt-2" />
-                <textarea name="body2" class="w-auto py-2 border border-gray-300 rounded-md" id="body" cols="30" rows="5">{{ old('body') }}</textarea>
+                <x-input-error :messages="$errors->get('body2')" class="mt-2" />
+                <textarea name="body2" class="w-auto py-2 border border-gray-300 rounded-md" id="body2" cols="30" rows="5">{{ old('body') }}</textarea>
             </div>
 
 
