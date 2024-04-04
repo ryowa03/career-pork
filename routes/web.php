@@ -11,13 +11,18 @@ use App\Http\Controllers\LoginController;
 
 use App\Http\Controllers\InforController;
 
+use App\Http\Controllers\UserProfileController;
+
+
 
 // use App\Http\Controllers\ProfileController as ProfileOfAdminController;
 
-
-//これ要因　上も
-
+//prefixっていうのは下にある全てのルートに影響を与える、この場合全てのルートがadmin/に続く形で定義される
+//adminでログインしている場合はadmindashboardへ、非ログイン状態ではadmindashbord入れない
 Route::prefix('admin')->name('admin.')->group(function(){
+
+
+
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
     })->middleware(['auth:admin', 'verified'])->name('dashboard');
@@ -28,9 +33,9 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::delete('/profile', [ProfileOfAdminController::class, 'destroy'])->name('profile.destroy');
     });
 
+    //こいつがadmin.phpと接続させている。つまり上記のプレフィックスの内容がadmin.phpにも反映される。
     require __DIR__.'/admin.php';
 });
-
 
 
 
@@ -83,6 +88,12 @@ Route::get('post/create',[PostController::class,'create']);
 //上記ミドルウェアが機能しているみたい。ユーザーログイン状態でpost/createいこうとすると、ダッシュボードに遷移する。
 //post.create行きたかったから、コメントアウトした。
 
+
+Route::post('/user/profile/store', [UserProfileController::class, 'store'])
+->name('user.profile.save');
+
+
+
 Route::post('post',[PostController::class,'store'])
 ->name('post.store'); 
 
@@ -119,5 +130,3 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
-
-
