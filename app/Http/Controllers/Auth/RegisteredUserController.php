@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Auth;
+namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -27,8 +27,9 @@ class RegisteredUserController extends Controller
 
     public function create(): View
 {
-    return view('admin.auth.register');
+    return view('auth.register');
 }
+
 
     /**
      * Handle an incoming registration request.
